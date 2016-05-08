@@ -1,0 +1,25 @@
+{
+  "name": "graphql-relay-ts-typings",
+  "version": "0.0.0",
+  "description": "Typescript definitions for graphql-relay",
+  "main": "graphql-relay.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliatsis/graphql-relay-ts-typings.git"
+  },
+  "keywords": [
+    "graphql-relay",
+    "graphql",
+    "relay",
+    "react",
+    "typescript",
+    "typings",
+    "ts"
+  ],
+  "author": "Anthony Liatsis <anthony.liatsis@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aliatsis/graphql-relay-ts-typings/issues"
+  },
+  "homepage": "https://github.com/aliatsis/graphql-relay-ts-typings#readme"
+}
