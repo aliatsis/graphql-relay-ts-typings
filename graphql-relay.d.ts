@@ -1,6 +1,5 @@
 declare module "graphql-relay" {
-  import * as graphql from 'graphql';
-  import { Promise } from 'es6-promise';
+  import * as graphql from "graphql";
 
   export var forwardConnectionArgs: ForwardConnectionArgs;
   export var backwardConnectionArgs: BackwardConnectionArgs;
