@@ -10,6 +10,19 @@ import {
   GraphQLOutputType
 } from "graphql";
 
+// need to export all imported from graphql to avoid private reference errors during use
+export {
+GraphQLFieldConfig,
+GraphQLResolveInfo,
+GraphQLArgumentConfig,
+GraphQLFieldConfigMap,
+GraphQLObjectType,
+InputObjectConfigFieldMap,
+GraphQLInterfaceType,
+GraphQLInputType,
+GraphQLOutputType
+}
+
 export var forwardConnectionArgs: ForwardConnectionArgs;
 export var backwardConnectionArgs: BackwardConnectionArgs;
 export var connectionArgs: ConnectionArgs;
