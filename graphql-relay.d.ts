@@ -1,4 +1,14 @@
-import * as graphql from "graphql";
+import {
+  GraphQLFieldConfig,
+  GraphQLResolveInfo,
+  GraphQLArgumentConfig,
+  GraphQLFieldConfigMap,
+  GraphQLObjectType,
+  InputObjectConfigFieldMap,
+  GraphQLInterfaceType,
+  GraphQLInputType,
+  GraphQLOutputType
+} from "graphql";
 
 export var forwardConnectionArgs: ForwardConnectionArgs;
 export var backwardConnectionArgs: BackwardConnectionArgs;
@@ -16,26 +26,26 @@ export function cursorToOffset(cursor: ConnectionCursor): number;
 export function getOffsetWithDefault(cursor: ConnectionCursor, defaultOffset: number): number;
 export function offsetToCursor(offset: number): ConnectionCursor;
 
-export function mutationWithClientMutationId(config: MutationConfig): graphql.GraphQLFieldConfig;
+export function mutationWithClientMutationId(config: MutationConfig): GraphQLFieldConfig;
 
-export function nodeDefinitions(idFetcher: ((id: string, context: any, info: graphql.GraphQLResolveInfo) => any), typeResolver?: typeResolverFn): GraphQLNodeDefinitions;
+export function nodeDefinitions(idFetcher: ((id: string, context: any, info: GraphQLResolveInfo) => any), typeResolver?: typeResolverFn): GraphQLNodeDefinitions;
 
 export function fromGlobalId(globalId: string): ResolvedGlobalId;
-export function globalIdField(typeName?: string, idFetcher?: (object: any, context: any, info: graphql.GraphQLResolveInfo) => string): graphql.GraphQLFieldConfig;
+export function globalIdField(typeName?: string, idFetcher?: (object: any, context: any, info: GraphQLResolveInfo) => string): GraphQLFieldConfig;
 export function toGlobalId(type: string, id: string): string;
 
-export function pluralIdentifyingRootField(config: PluralIdentifyingRootFieldConfig): graphql.GraphQLFieldConfig;
+export function pluralIdentifyingRootField(config: PluralIdentifyingRootFieldConfig): GraphQLFieldConfig;
 
 type ConnectionCursor = string;
 
 interface ForwardConnectionArgs {
-  after: graphql.GraphQLArgumentConfig;
-  first: graphql.GraphQLArgumentConfig;
+  after: GraphQLArgumentConfig;
+  first: GraphQLArgumentConfig;
 }
 
 interface BackwardConnectionArgs {
-  before: graphql.GraphQLArgumentConfig;
-  last: graphql.GraphQLArgumentConfig;
+  before: GraphQLArgumentConfig;
+  last: GraphQLArgumentConfig;
 }
 
 interface ConnectionArgs {
@@ -45,16 +55,16 @@ interface ConnectionArgs {
 
 interface ConnectionConfig {
   name?: string;
-  nodeType: graphql.GraphQLObjectType;
+  nodeType: GraphQLObjectType;
   resolveNode?: Function;
   resolveCursor?: Function;
-  edgeFields?: (() => graphql.GraphQLFieldConfigMap) | graphql.GraphQLFieldConfigMap;
-  connectionFields?: (() => graphql.GraphQLFieldConfigMap) | graphql.GraphQLFieldConfigMap;
+  edgeFields?: (() => GraphQLFieldConfigMap) | GraphQLFieldConfigMap;
+  connectionFields?: (() => GraphQLFieldConfigMap) | GraphQLFieldConfigMap;
 }
 
 interface GraphQLConnectionDefinitions {
-  edgeType: graphql.GraphQLObjectType;
-  connectionType: graphql.GraphQLObjectType;
+  edgeType: GraphQLObjectType;
+  connectionType: GraphQLObjectType;
 }
 
 interface PageInfo {
@@ -86,32 +96,32 @@ interface ArraySliceMetaInfo {
   arrayLength: number;
 }
 
-type mutationFnSync = (object: any, ctx: any, info: graphql.GraphQLResolveInfo) => any;
-type mutationFnAsync = (object: any, ctx: any, info: graphql.GraphQLResolveInfo) => Promise<any>;
+type mutationFnSync = (object: any, ctx: any, info: GraphQLResolveInfo) => any;
+type mutationFnAsync = (object: any, ctx: any, info: GraphQLResolveInfo) => Promise<any>;
 type mutationFn = mutationFnSync | mutationFnAsync;
 
 interface MutationConfig {
   name: string;
-  inputFields: graphql.InputObjectConfigFieldMap;
-  outputFields: graphql.GraphQLFieldConfigMap;
+  inputFields: InputObjectConfigFieldMap;
+  outputFields: GraphQLFieldConfigMap;
   mutateAndGetPayload: mutationFn;
 }
 
 interface GraphQLNodeDefinitions {
-  nodeInterface: graphql.GraphQLInterfaceType;
-  nodeField: graphql.GraphQLFieldConfig;
+  nodeInterface: GraphQLInterfaceType;
+  nodeField: GraphQLFieldConfig;
 }
 
-type typeResolverFnSync = (object: any) => graphql.GraphQLObjectType;
-type typeResolverFnAsync = (object: any) => Promise<graphql.GraphQLObjectType>;
+type typeResolverFnSync = (object: any) => GraphQLObjectType;
+type typeResolverFnAsync = (object: any) => Promise<GraphQLObjectType>;
 type typeResolverFn = typeResolverFnSync | typeResolverFnAsync;
 
 interface PluralIdentifyingRootFieldConfig {
   argName: string;
-  inputType: graphql.GraphQLInputType;
-  outputType: graphql.GraphQLOutputType;
+  inputType: GraphQLInputType;
+  outputType: GraphQLOutputType;
   resolveSingleInput:
-  (input: any, context: any, info: graphql.GraphQLResolveInfo) => any;
+  (input: any, context: any, info: GraphQLResolveInfo) => any;
   description?: string;
 }
 
