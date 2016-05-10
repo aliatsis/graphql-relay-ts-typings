@@ -7,7 +7,8 @@ import {
   InputObjectConfigFieldMap,
   GraphQLInterfaceType,
   GraphQLInputType,
-  GraphQLOutputType
+  GraphQLOutputType,
+  GraphQLFieldConfigArgumentMap
 } from "graphql";
 
 // need to export all imported from graphql to avoid private reference errors during use
@@ -20,7 +21,8 @@ GraphQLObjectType,
 InputObjectConfigFieldMap,
 GraphQLInterfaceType,
 GraphQLInputType,
-GraphQLOutputType
+GraphQLOutputType,
+GraphQLFieldConfigArgumentMap
 }
 
 export var forwardConnectionArgs: ForwardConnectionArgs;
@@ -61,10 +63,7 @@ export interface BackwardConnectionArgs {
   last: GraphQLArgumentConfig;
 }
 
-export interface ConnectionArgs {
-  forwardConnectionArgs: ForwardConnectionArgs;
-  backwardConnectionArgs: BackwardConnectionArgs;
-}
+export interface ConnectionArgs extends ForwardConnectionArgs, BackwardConnectionArgs, GraphQLFieldConfigArgumentMap { }
 
 export interface ConnectionConfig {
   name?: string;
