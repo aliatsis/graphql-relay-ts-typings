@@ -3,6 +3,6 @@
   "main": "graphql-relay.d.ts",
   "author": "AAnthony Liatsis <anthony.liatsis@gmail.com>",
   "dependencies": {
-    "graphql": "github:dimdimych/typed-graphql#59fede86513d3ed0dede6649967f744d0f556ff5"
+    "graphql": "github:aliatsis/typed-graphql#960ae8b59fe4e684443879c214f44ba51ecfb486"
   }
 }
