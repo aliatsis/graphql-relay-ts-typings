@@ -1,8 +1,8 @@
 {
   "name": "graphql-relay",
   "main": "graphql-relay.d.ts",
-  "author": "AAnthony Liatsis <anthony.liatsis@gmail.com>",
+  "author": "Anthony Liatsis <anthony.liatsis@gmail.com>",
   "dependencies": {
-    "graphql": "github:aliatsis/typed-graphql#960ae8b59fe4e684443879c214f44ba51ecfb486"
+    "graphql": "github:nitintutlani/typed-graphql#651d3271891d6c28759764c1de0284425fc881c6",
   }
 }
