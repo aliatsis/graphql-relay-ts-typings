@@ -1,6 +1,6 @@
 {
   "name": "graphql-relay-ts-typings",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Typescript definitions for graphql-relay",
   "main": "graphql-relay.d.ts",
   "repository": {
