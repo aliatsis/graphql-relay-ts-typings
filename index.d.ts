@@ -9,15 +9,18 @@ declare module "graphql-relay" {
     GraphQLList,
     GraphQLObjectType,
     GraphQLString,
+    GraphQLInterfaceType
+  } from "graphql";
+
+  import {
     GraphQLFieldConfig,
     InputObjectConfigFieldMap,
     GraphQLFieldConfigMap,
     GraphQLFieldConfigArgumentMap,
     GraphQLResolveInfo,
-    GraphQLInterfaceType,
     GraphQLInputType,
     GraphQLOutputType
-  } from "graphql";
+  } from "graphql/type/definition";
 
   export var forwardConnectionArgs: GraphQLFieldConfigArgumentMap;
   export var backwardConnectionArgs: GraphQLFieldConfigArgumentMap;
@@ -28,8 +31,8 @@ declare module "graphql-relay" {
     nodeType: GraphQLObjectType,
     resolveNode?: Function,
     resolveCursor?: Function,
-    edgeFields?: (() => GraphQLFieldConfigMap) | GraphQLFieldConfigMap,
-    connectionFields?: (() => GraphQLFieldConfigMap) | GraphQLFieldConfigMap
+    edgeFields?: (() => GraphQLFieldConfigMap<any>) | GraphQLFieldConfigMap<any>,
+    connectionFields?: (() => GraphQLFieldConfigMap<any>) | GraphQLFieldConfigMap<any>
   };
 
   type GraphQLConnectionDefinitions = {
@@ -166,29 +169,29 @@ declare module "graphql-relay" {
 
   // mutation/mutation.js
 
-  type mutationFn = ((Object, GraphQLResolveInfo) => Object) |
-    ((Object, GraphQLResolveInfo) => Promise<Object>);
+  type mutationFn = ((Object: any, GraphQLResolveInfo: any) => Object) |
+    ((Object: any, GraphQLResolveInfo: any) => Promise<Object>);
 
   type MutationConfig = {
     name: string,
     inputFields: InputObjectConfigFieldMap,
-    outputFields: GraphQLFieldConfigMap,
+    outputFields: GraphQLFieldConfigMap<any>,
     mutateAndGetPayload: mutationFn
   };
 
   export function mutationWithClientMutationId(
     config: MutationConfig
-  ): GraphQLFieldConfig;
+  ): GraphQLFieldConfig<any>;
 
   // node/node.js
 
   type GraphQLNodeDefinitions = {
     nodeInterface: GraphQLInterfaceType,
-    nodeField: GraphQLFieldConfig
+    nodeField: GraphQLFieldConfig<any>
   };
 
-  type typeResolverFn = ((any) => GraphQLObjectType) |
-    ((any) => Promise<GraphQLObjectType>);
+  type typeResolverFn = ((v: any) => GraphQLObjectType) |
+    ((v: any) => Promise<GraphQLObjectType>);
 
   /**
    * Given a function to map from an ID to an underlying object, and a function
@@ -231,7 +234,7 @@ declare module "graphql-relay" {
   export function globalIdField(
     typeName?: string,
     idFetcher?: (object: any, info: GraphQLResolveInfo) => string
-  ): GraphQLFieldConfig;
+  ): GraphQLFieldConfig<any>;
 
 
 
@@ -247,6 +250,6 @@ declare module "graphql-relay" {
 
   export function pluralIdentifyingRootField(
     config: PluralIdentifyingRootFieldConfig
-  ): GraphQLFieldConfig;
+  ): GraphQLFieldConfig<any>;
 
 }
